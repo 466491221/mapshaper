@@ -26,9 +26,11 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: git pull
+    - run: |
+        git pull
         pwd
-    - run: cd mapshaper
+    - run: |
+        cd mapshaper
         pwd
     - run: npm install
     - run: npm run build
