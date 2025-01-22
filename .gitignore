@@ -5,8 +5,6 @@ npm-debug.log
 .npmignore
 .jshintrc
 /mapshaper.js
-/www/mapshaper-gui.js
-/www/mapshaper.js
 /www/node_modules.js
 # /www/basemap.js
 pre-publish
