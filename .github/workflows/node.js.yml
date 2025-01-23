@@ -32,3 +32,8 @@ jobs:
       run: npm run build
     - name: 测试
       run: npm test
+    - name: 部署
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        branch: www-pages
+        folder: www
