@@ -1,0 +1,31 @@
+1.创建Dockerfile
+# 使用Caddy镜像作为基础镜像
+FROM caddy:2.7.5
+
+# 将Caddyfile复制到容器中的/etc/caddy/目录
+COPY Caddyfile /etc/caddy/Caddyfile
+
+# 创建一个目录来存放前端应用
+WORKDIR /usr/share/caddy/mapshaper
+
+# 复制前端应用到容器中
+COPY mapshaper /usr/share/caddy/mapshaper
+
+# 暴露Caddy服务器的默认HTTP和HTTPS端口
+EXPOSE 80 443
+
+2.创建Caddyfile
+:80 {
+    root * /usr/share/caddy/mapshaper
+    file_server
+    encode gzip
+}
+
+3.构建镜像
+docker build -t my-mapshaper-app .
+
+4.启动镜像服务
+docker run -d --name=mapshaper -p 21180:80 --restart=always my-mapshaper-app
+
+
+
